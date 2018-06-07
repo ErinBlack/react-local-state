@@ -24,10 +24,11 @@ class App extends Component {
   render() {
     return (
       <div>
-        <p>This user is: {this.state.user}</p>
-        <p><input onChange={this.handleChange}/></p>
-        <p>This city is: {this.state.city}</p>
-        <p><input onChange={this.handleChangeCity}/></p>
+        <label for="name">What is your name?</label>
+        <p><input id="name" onChange={this.handleChange}/></p>
+        <label for="City">What city do you live in? </label>
+        <p><input id="city" onChange={this.handleChangeCity}/></p>
+        <p>{this.state.user} is from: {this.state.city}</p>
       </div>
     );
   }
