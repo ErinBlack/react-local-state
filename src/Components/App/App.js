@@ -25,23 +25,29 @@ class App extends Component {
   }
 
   // Logging 
-  handleClick = (e) => {
+  handleSubmit = (e) => {
     console.log('in handleclick')
     console.log('name', this.state.user.name);
     console.log('city', this.state.user.city);
-    e.target.reset();
-
+    e.preventDefault();
+    // e.target.reset();
+    this.setState({
+        user: {
+          name:'',
+          city: '',
+        }
+    })
   }
 
   render() {
     return (
-      <form onSubmit={this.handleClick}>
+      <form onSubmit={this.handleSubmit}>
         <label for="name">What is your name?</label>
-        <p><input id="name" onChange={this.handleChangeFor('name')}/></p>
+        <p><input value={this.state.user.name} id="name" onChange={this.handleChangeFor('name')}/></p>
         <label for="City">What city do you live in? </label>
-        <p><input id="city" onChange={this.handleChangeFor('city')}/></p>
+        <p><input value={this.state.user.city} id="city" onChange={this.handleChangeFor('city')}/></p>
   
-        <button >Log the Object</button>
+        <input type="submit" value="Submit the Form"/>
         <p>{this.state.user.name} is from: {this.state.user.city}</p>
       </form>
     );
